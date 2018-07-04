@@ -15,7 +15,7 @@ module ActiveModel
           url = ensure_protocol(value)
           uri = Addressable::URI.parse(url)
           
-          record[attribute] = url if options[:ensure_protocol]
+          record.send("#{attribute}=", url) if options[:ensure_protocol]
         rescue
           invalid = true
         end
